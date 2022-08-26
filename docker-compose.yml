@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: prismagraphql/mongo-single-replica:4.4.3-bionic
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: prisma
+    ports:
+      - 27017:27017
+    restart: always
+    volumes:
+      - /var/www/html/workspace/volumes/mongodb_prisma/data:/data/db
+    command: >
+      bash -c "npx prisma generate --schema=./src/infra/database/prisma/schema.prisma
+      npx prisma db push --schema=./src/infra/database/prisma/schema.prisma"
