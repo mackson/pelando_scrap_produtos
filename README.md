@@ -24,7 +24,9 @@ npm install
 
 ### 3. Configuração da Variável de ambiente (URL do MongoDB)
 
-Na pasta root do repositório existe um arquivo chamado .env.example que é o modelo para a definição das variáveis de ambiente necessárias para funcionamento do banco de dados MongoDB da aplicação.Renomeie o arquivo .env.example para .env e inclua o trecho de código logo a baixo.
+Na pasta root do repositório existe um arquivo chamado .env.example que é o modelo para a definição das variáveis de ambiente necessárias para funcionamento do banco de dados MongoDB da aplicação.
+
+Renomeie o arquivo .env.example para .env e inclua o trecho de código logo a baixo.
 
 ```
 DATABASE_URL="mongodb://root:prisma@localhost:27017/prisma-mongo?authSource=admin&retryWrites=true&w=majority"
@@ -36,6 +38,13 @@ Tenha previamente instalado em seu sistema operacional o docker e o docker compo
 ```
 cd pelando_scrap_produtos
 docker compose up -d
+```
+
+Se for de sua preferência criar um volume de persistencia da base mongodb criada, insira no arquivo dockcer-compose.yml o seguinte trecho:
+
+```
+    volumes:
+      - /path-to-you-mongodb/data:/data/db
 ```
 
 ### 5. Teste Local da Aplicação
