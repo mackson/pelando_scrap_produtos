@@ -49,7 +49,7 @@ Se for de sua preferência criar um volume de persistencia da base mongodb criad
 
 ### 5. Inicializar o Prisma Client e o MongoDB Schema
 
-Para registrar e inicializar o Prisma client juntamente com o Schema no banco de dados, insira os dois comando logo a baixo.
+Para registrar e inicializar o Prisma client juntamente com o Schema no banco de dados, insira os dois comandos logo a baixo.
 
 ```
 npx prisma generate --schema=./src/infra/database/prisma/schema.prisma
