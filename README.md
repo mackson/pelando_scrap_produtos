@@ -52,9 +52,9 @@ Se for de sua preferência criar um volume de persistencia da base mongodb criad
 Para registrar e inicializar o Prisma client juntamente com o Schema no banco de dados, insira os dois comandos logo a baixo.
 
 ```
+cd pelando_scrap_produtos
 npx prisma generate --schema=./src/infra/database/prisma/schema.prisma
 npx prisma db push --schema=./src/infra/database/prisma/schema.prisma
-
 ```
 
 ### 6. Teste Local da Aplicação
