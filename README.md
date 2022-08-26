@@ -47,7 +47,17 @@ Se for de sua preferência criar um volume de persistencia da base mongodb criad
       - /path-to-you-mongodb/data:/data/db
 ```
 
-### 5. Teste Local da Aplicação
+### 5. Inicializar o Prisma Client e o MongoDB Schema
+
+Para registrar e inicializar o Prisma client juntamente com o Schema no banco de dados, insira os dois comando logo a baixo.
+
+```
+npx prisma generate --schema=./src/infra/database/prisma/schema.prisma
+npx prisma db push --schema=./src/infra/database/prisma/schema.prisma
+
+```
+
+### 6. Teste Local da Aplicação
 
 Após a instalação das dependências e configurações agora é possível inicializar o serviço com o comando
 
@@ -56,7 +66,7 @@ cd pelando_scrap_produtos
 npm run start
 ```
 
-A aplicação irá inicializar na porta 3333, agora utilizando uma ferramenta cliente de API REST como Postman ou Insomnia, crie uma requisição do tipo POST com a URL logo a baixo.
+A aplicação irá inicializar na <strong>porta 3333</strong>, agora utilizando uma ferramenta cliente de API REST como Postman ou Insomnia, crie uma requisição do tipo POST com a URL logo a baixo.
 
 ```
 http://localhost:3333/product/scrap
@@ -124,8 +134,3 @@ npm run test
 - [ ] Implementação de CI/CD com pod para a aplicação e banco de dados.
 - [ ] Aplicar sistema de Logs, Métricas e Observabilidade do banco de dados, do serviço e da infraestrutura.
 - [ ] Implementar Documentação (Swagger ou Backstage.io).
-
-
-<strong>Atenção:</strong>
-
-Esta aplicação não foi projetada para deploy em produção, contemplando apenas uma implementação de valor acadêmico ou para exercício das práticas de desenvolvimento e engenharia de software supracitadas.
