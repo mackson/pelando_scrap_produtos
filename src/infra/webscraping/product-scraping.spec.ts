@@ -2,6 +2,8 @@ import playwright from 'playwright';
 import moment from 'moment';
 import { storeConfigs } from './store-configs';
 
+jest.setTimeout(60000);
+
 describe('Process Webscraping', () => {
   it('Should be able to process product webscraping into a store', async () => {
     
@@ -43,7 +45,7 @@ describe('Process Webscraping', () => {
       updatedAt: moment().toDate(),
     };
 
-    console.log('Webscraping', response);
+    // console.log('Webscraping', response);
 
     const valuesArray = Object.values(response);
   
@@ -51,28 +53,24 @@ describe('Process Webscraping', () => {
       expect(value).toBeTruthy();
     }
 
+    await browser.close();
+
   });
 });
 
-// test('Visit Page With Firefox', async () => {
+test('Visit Page With Firefox', async () => {
 
-//   const browser = await playwright.firefox.launch();
+  const browser = await playwright.firefox.launch();
     
-//   const page = await browser.newPage();
+  const page = await browser.newPage();
   
-//   await page.goto('https://www.saraiva.com.br/mindset-9404582/p');
+  await page.goto('https://www.saraiva.com.br/mindset-9404582/p');
 
-//   const pageTitle = await page.title();
+  const pageTitle = await page.title();
 
-//   console.log('Page Title From Firefox:', pageTitle);
+  // console.log('Page Title From Firefox:', pageTitle);
   
-//   expect(pageTitle).toBeTruthy();
+  expect(pageTitle).toBe('Mindset - Saraiva');
 
-//   await browser.close();
-// });
-
-process.once('SIGUSR2', 
-  function () { 
-    process.kill(process.pid, 'SIGUSR2'); 
-  }
-);
+  await browser.close();
+});
